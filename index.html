@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <script src="/assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="Creador" content="Javier Andrés Serna Bañol" />
+    <title>Autotablas</title>
+    <!-- Custom styles for this page -->
+   
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.css" rel="stylesheet"> <!-- Vendor CSS Files -->
+   
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/responsivedatatable.css">
+    
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+
+    <!-- Custom styles for this template -->
+  </head>
+  <body>
+    <div
+      class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+    ></div>
+
+    <header
+      class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow"
+      data-bs-theme="dark"
+    >
+      <div class="text-center mx-auto">
+        <img
+          class="img-fluid m-lg-3 d-inline-block"
+          src="/assets/media/Logo.png"
+          width="100"
+        />
+        <h2>Autotablas - Lector de APIs</h2>
+      </div>
+
+      <ul class="navbar-nav flex-row d-md-none">
+        <li class="nav-item text-nowrap">
+          <button
+            class="nav-link px-3 text-white"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSearch"
+            aria-controls="navbarSearch"
+            aria-expanded="false"
+            aria-label="Toggle search"
+          >
+            <svg class="bi"><use xlink:href="#search" /></svg>
+          </button>
+        </li>
+        <li class="nav-item text-nowrap">
+          <button
+            class="nav-link px-3 text-white"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebarMenu"
+            aria-controls="sidebarMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg class="bi"><use xlink:href="#list" /></svg>
+          </button>
+        </li>
+      </ul>
+
+      <div id="navbarSearch" class="navbar-search w-100 collapse">
+        <input
+          class="form-control w-100 rounded-0 border-0"
+          type="text"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </div>
+    </header>
+
+    <input
+      hidden
+      id="API"
+      value="https://jsonplaceholder.typicode.com/photos"
+    />
+    <div class="container-fluid">
+      <div class="row">
+        <main class="">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          ></div>
+
+          <div></div>
+
+          <div class="row">
+            <div class="col"><h2>Resultado</h2></div>
+
+
+
+
+
+            <div class="col">
+              <div class="text-end mb-3">
+          
+                
+
+                <select class="btn btn-light mx-1 input-group-lg" id="metodo">
+                
+                  <option value="GET">GET</option>
+                  <option value="POST">POST</option>
+                  <option value="PUT">PUT</option>
+                  <option value="DELETE">DELETE</option>
+                </select>
+    
+                <select class="btn btn-light mx-1 input-group-lg" id="cors">
+         
+                  <option value="cors">CORS</option>
+                  <option value="no-cors">Sin CORS</option>
+                
+                </select>
+                <button id="buscar" class="mx-1 input-group-lg btn btn-info">
+                  Consultar
+                </button>
+                
+
+                <input
+                  placeholder="API url"
+                  id="LinkAPI"
+                  type="text"
+                  class="bg-dark p-2 rounded-1 form-text"
+                />
+
+                <input
+                placeholder="Parametros (Opcional)"
+                id="Parametros"
+                type="text"
+                class="bg-dark p-2 rounded-1 form-text"
+              />
+              </div>
+            </div>
+          </div>
+
+        
+
+          <div class="table-responsive small">
+            <table id="tabla" class="table table-bordered datatable">
+
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+  </body>
+
+  <!-- Page level plugins -->
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.js"></script>
+  <!-- Page level custom scripts -->
+  <script src="/assets/js/responsibledatatable.js"></script>
+
+  <script src="/assets/js/datatables.js"></script>
+  <script src="/assets/js/datatablebuttons.js"></script>
+  <script src="/assets/js/dtbuttons.js"></script>
+  <script src="/assets/js/dthtml5.js"></script>
+  <script src="/assets/js/pdfmake.js"></script>
+  <script src="/assets/js/pdffonts.js"></script>
+  <script src="/assets/js/dtprint.js"></script>
+  <script src="/assets/js/responsive.js"></script>
+  <script src="/assets/js/responsibledt.js"></script>
+
+
+  <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/sweetalert2.js"></script>
+
+  <script src="/js/AutoTabla.js"></script>
+
+</html>

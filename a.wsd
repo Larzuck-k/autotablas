@@ -1,0 +1,47 @@
+@startuml
+component "El desarrollo del ferrocarril en el siglo XIX tuvo un impacto significativo en la migración del campo a las ciudades" as problema
+package "Causas" {
+    [Falta de Infraestructura Ferroviaria]
+    [Expansión Urbana]
+    [Demanda de Empleo]
+}
+package "Efectos" {
+    [Teoría de los miasmas]
+    [Problemas de hacinamiento, falta de salubridad y propagación de enfermedades en las ciudades.]
+    [Presión sobre los Servicios Públicos]
+}
+
+package "Efectos de causas" {
+    [Sobrepoblación]
+    [Concentración de oportunidades laborales en ciudades con estaciones de ferrocarril.]
+}
+
+package "Consecuencias" {
+    [Escasez de Viviendas]
+    [Desigualdad Social]
+    [Congestión Vehicular]
+    [Sobrecarga de Infraestructura]
+    [Desempleo Estructural]
+    [Impacto Ambiental Negativo]
+}
+
+[Falta de Infraestructura Ferroviaria] --> problema
+[Expansión Urbana] --> problema
+[Demanda de Empleo] --> problema
+
+[Sobrepoblación] --> [Expansión Urbana]
+[Concentración de oportunidades laborales en ciudades con estaciones de ferrocarril.] --> [Expansión Urbana]
+
+problema --> [Teoría de los miasmas]
+problema --> [Problemas de hacinamiento, falta de salubridad y propagación de enfermedades en las ciudades.]
+problema --> [Presión sobre los Servicios Públicos]
+
+[Teoría de los miasmas] --> [Escasez de Viviendas]
+[Teoría de los miasmas] --> [Desigualdad Social]
+[Problemas de hacinamiento, falta de salubridad y propagación de enfermedades en las ciudades.] --> [Congestión Vehicular]
+[Problemas de hacinamiento, falta de salubridad y propagación de enfermedades en las ciudades.] --> [Sobrecarga de Infraestructura]
+[Presión sobre los Servicios Públicos] --> [Desempleo Estructural]
+[Presión sobre los Servicios Públicos] --> [Impacto Ambiental Negativo]
+@enduml
+
+"package" , "-->", "[]", "component"
